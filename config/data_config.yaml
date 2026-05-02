@@ -1,0 +1,18 @@
+date_range:
+  start: "2007-01-01"
+  end: "2025-12-31"
+  training_start: "2010-01-01"
+
+yfinance_tickers:
+  - {name: "us100", ticker: "^NDX",      role: "primary"}
+  - {name: "vix",   ticker: "^VIX",      role: "context"}
+  - {name: "spx",   ticker: "^GSPC",     role: "context"}
+  - {name: "dxy",   ticker: "DX-Y.NYB",  role: "context"}
+
+fred_series:
+  - {name: "cpi",  series_id: "CPIAUCSL", purpose: "release_dates_only"}
+  - {name: "nfp",  series_id: "PAYEMS",   purpose: "release_dates_only"}
+
+cboe:
+  source: "cboe_direct"
+  fallback: "yfinance_cpc"
