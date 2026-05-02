@@ -99,7 +99,7 @@ def test_fred_release_dates_known_value(tmp_path: Path) -> None:
     Tolerance: ±1 day to absorb minor FRED metadata differences.
     """
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(override=True)  # earlier unit tests may have planted a fake key
     api_key = os.getenv("FRED_API_KEY", "").strip()
     if not api_key:
         pytest.skip("FRED_API_KEY not set in environment or .env")
