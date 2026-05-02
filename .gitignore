@@ -12,6 +12,9 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+.mplconfig*/
 
 # Data — entire tree gitignored EXCEPT committed source CSVs
 data/*
