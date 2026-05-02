@@ -17,7 +17,7 @@ _FFILL_LIMIT_PUTCALL = 5
 
 def build_master_dataset(
     yfinance_data: dict[str, pd.DataFrame],
-    putcall: pd.Series,
+    putcall: pd.Series | None,
     config: DataConfig,
 ) -> pd.DataFrame:
     """Build the master dataset anchored on US100 trading days.
@@ -25,7 +25,8 @@ def build_master_dataset(
     Args:
         yfinance_data: Mapping name -> OHLCV DataFrame. Must include 'us100', 'vix',
             'spx', 'dxy' (matching config.yfinance_tickers).
-        putcall: Daily put/call ratio Series.
+        putcall: Daily put/call ratio Series, or None if the source is unavailable.
+            When None, the putcall_ratio column is omitted from the output.
         config: DataConfig (uses training_start to gate NaN validation).
 
     Returns:
@@ -63,7 +64,10 @@ def build_master_dataset(
     dxy = yfinance_data["dxy"].reindex(anchor).ffill(limit=_FFILL_LIMIT_CONTEXT)
     out["dxy_close"] = dxy["close"]
 
-    out["putcall_ratio"] = putcall.reindex(anchor).ffill(limit=_FFILL_LIMIT_PUTCALL)
+    if putcall is not None and not putcall.empty:
+        out["putcall_ratio"] = putcall.reindex(anchor).ffill(limit=_FFILL_LIMIT_PUTCALL)
+    else:
+        logger.warning("put/call source unavailable; omitting putcall_ratio column")
 
     _validate_post_training_no_nan(out, config)
 

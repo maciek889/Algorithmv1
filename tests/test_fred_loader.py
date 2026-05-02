@@ -98,9 +98,11 @@ def test_fred_release_dates_known_value(tmp_path: Path) -> None:
 
     Tolerance: ±1 day to absorb minor FRED metadata differences.
     """
+    from dotenv import load_dotenv
+    load_dotenv()
     api_key = os.getenv("FRED_API_KEY", "").strip()
     if not api_key:
-        pytest.skip("FRED_API_KEY not set in environment")
+        pytest.skip("FRED_API_KEY not set in environment or .env")
 
     df = load_fred_release_dates(
         "CPIAUCSL",

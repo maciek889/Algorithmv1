@@ -76,8 +76,16 @@ def main() -> int:
     CALENDARS_DIR.mkdir(parents=True, exist_ok=True)
     fomc.to_parquet(CALENDARS_DIR / "fomc_dates.parquet")
 
-    putcall = load_cboe_putcall(cfg.start, cfg.end, RAW_CBOE, source=cfg.cboe.source, refresh=refresh_cboe)
-    putcall_source = _detect_putcall_source(RAW_CBOE)
+    try:
+        putcall = load_cboe_putcall(cfg.start, cfg.end, RAW_CBOE, source=cfg.cboe.source, refresh=refresh_cboe)
+        putcall_source = _detect_putcall_source(RAW_CBOE)
+    except Exception as e:
+        logging.getLogger(__name__).warning(
+            "put/call load failed (%s); continuing without it. "
+            "Source deferred to a later stage.", e,
+        )
+        putcall = None
+        putcall_source = "unavailable"
 
     master = build_master_dataset(yfinance_data, putcall, cfg)
 

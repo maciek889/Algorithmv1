@@ -139,7 +139,14 @@ def _volume_section(df: pd.DataFrame) -> str:
 
 def _putcall_section(df: pd.DataFrame, source: str | None) -> str:
     if "putcall_ratio" not in df.columns:
-        return f"## 5. Put/Call coverage\n\n{WARN} putcall_ratio column missing"
+        return (
+            f"## 5. Put/Call coverage  {WARN}\n\n"
+            f"- Source used: `{source or 'unavailable'}`\n"
+            "- **Deferred**: CBOE direct CSV is bot-blocked (403); the documented "
+            "yfinance fallback `^CPCE` is delisted. The `putcall_ratio` column is "
+            "omitted from the master dataset until a working source is identified "
+            "(planned for a later stage)."
+        )
 
     pc = df["putcall_ratio"]
     coverage = pc.notna().mean() * 100
