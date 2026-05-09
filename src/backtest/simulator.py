@@ -20,8 +20,10 @@ import pandas as pd
 
 
 # ── Cost parameters for US100 CFD ────────────────────────────────────────────
-SPREAD_POINTS = 1.5        # full spread cost applied on entry
-SWAP_PER_NIGHT = -0.03     # points per contract per night held
+SPREAD_POINTS = 1.0        # full spread cost round-trip
+SLIPPAGE_NORMAL = 0.5      # slippage for normal entry, time exit, and TP exit
+SLIPPAGE_SL = 2.0          # slippage for SL exit
+SWAP_RATE_ANNUAL = 0.06    # 6% annualized swap applied on full position value
 
 
 @dataclass
@@ -84,7 +86,8 @@ def resolve_trade(
         return None
 
     entry_close = float(master_df.iloc[entry_pos]["us100_close"])
-    effective_entry = entry_close + (SPREAD_POINTS / 2.0)  # half-spread on entry
+    # Entry: Close + half-spread + normal slippage
+    effective_entry = entry_close + (SPREAD_POINTS / 2.0) + SLIPPAGE_NORMAL
 
     tp_level = effective_entry + (tp_multiplier * atr_value)
     sl_level = effective_entry - (sl_multiplier * atr_value)
@@ -99,9 +102,23 @@ def resolve_trade(
     exit_pos = None
 
     for future_pos in range(entry_pos + 1, max_pos + 1):
+        day_open = float(master_df.iloc[future_pos]["us100_open"])
         day_high = float(master_df.iloc[future_pos]["us100_high"])
         day_low = float(master_df.iloc[future_pos]["us100_low"])
 
+        # 1. Gap logic at Open
+        if day_open <= sl_level:
+            exit_price = day_open
+            exit_reason = "sl"
+            exit_pos = future_pos
+            break
+        if day_open >= tp_level:
+            exit_price = day_open
+            exit_reason = "tp"
+            exit_pos = future_pos
+            break
+
+        # 2. Intraday triggers
         hit_sl = day_low <= sl_level
         hit_tp = day_high >= tp_level
 
@@ -125,18 +142,26 @@ def resolve_trade(
 
     exit_date = master_df.index[exit_pos]
     holding_days = exit_pos - entry_pos
+    calendar_days = (exit_date - entry_date).days
 
     spread_cost = SPREAD_POINTS / 2.0  # half-spread at exit too
-    swap_cost = abs(SWAP_PER_NIGHT) * holding_days
-    raw_pnl = exit_price - effective_entry
-    net_pnl = raw_pnl - spread_cost - swap_cost
+    
+    if exit_reason == "sl":
+        slippage_cost = SLIPPAGE_SL
+    else:
+        slippage_cost = SLIPPAGE_NORMAL
+        
+    swap_cost = calendar_days * (effective_entry * SWAP_RATE_ANNUAL / 365.0)
+    
+    effective_exit = exit_price - spread_cost - slippage_cost
+    net_pnl = effective_exit - effective_entry - swap_cost
 
     return TradeResult(
         entry_date=entry_date,
         exit_date=exit_date,
         entry_price=entry_close,
         effective_entry=effective_entry,
-        exit_price=exit_price,
+        exit_price=effective_exit,
         exit_reason=exit_reason,
         holding_days=holding_days,
         pnl_points=net_pnl,
