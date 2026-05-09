@@ -16,11 +16,14 @@ __pycache__/
 *.ipynb_checkpoints/
 .mplconfig*/
 
-# Data — entire tree gitignored EXCEPT committed source CSVs
+# Data — entire tree gitignored EXCEPT committed source CSVs and reports
 data/*
 !data/calendars_source/
 data/calendars_source/*
 !data/calendars_source/*.csv
+!data/reports/
+data/reports/*
+!data/reports/*.json
 
 # IDE
 .vscode/
