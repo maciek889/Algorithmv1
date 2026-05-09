@@ -1,6 +1,6 @@
 {
   "stage": "1.8_final_evaluation",
-  "optimal_threshold": 0.6,
+  "optimal_threshold": 0.5,
   "configuration": {
     "initial_capital": 10000.0,
     "risk_per_trade_pct": 1.0,
@@ -16,6 +16,41 @@
   },
   "threshold_search_results": [
     {
+      "threshold": 0.5,
+      "total_trades": 272,
+      "profit_factor": 1.2436,
+      "net_profit": 4747.64,
+      "max_drawdown_pct": 9.23
+    },
+    {
+      "threshold": 0.51,
+      "total_trades": 249,
+      "profit_factor": 1.2031,
+      "net_profit": 3526.23,
+      "max_drawdown_pct": 9.21
+    },
+    {
+      "threshold": 0.52,
+      "total_trades": 226,
+      "profit_factor": 1.2547,
+      "net_profit": 3839.64,
+      "max_drawdown_pct": 8.87
+    },
+    {
+      "threshold": 0.53,
+      "total_trades": 201,
+      "profit_factor": 1.1291,
+      "net_profit": 1702.09,
+      "max_drawdown_pct": 8.87
+    },
+    {
+      "threshold": 0.54,
+      "total_trades": 170,
+      "profit_factor": 1.2108,
+      "net_profit": 2331.28,
+      "max_drawdown_pct": 7.85
+    },
+    {
       "threshold": 0.55,
       "total_trades": 145,
       "profit_factor": 1.261,
@@ -23,681 +58,1962 @@
       "max_drawdown_pct": 10.68
     },
     {
-      "threshold": 0.6,
-      "total_trades": 84,
-      "profit_factor": 1.4118,
-      "net_profit": 2208.21,
-      "max_drawdown_pct": 9.33
+      "threshold": 0.56,
+      "total_trades": 132,
+      "profit_factor": 1.3286,
+      "net_profit": 2793.25,
+      "max_drawdown_pct": 8.99
     },
     {
-      "threshold": 0.62,
-      "total_trades": 79,
-      "profit_factor": 1.3997,
-      "net_profit": 2091.01,
-      "max_drawdown_pct": 8.0
-    },
-    {
-      "threshold": 0.64,
-      "total_trades": 71,
-      "profit_factor": 1.3542,
-      "net_profit": 1657.17,
-      "max_drawdown_pct": 10.06
-    },
-    {
-      "threshold": 0.66,
-      "total_trades": 58,
-      "profit_factor": 1.341,
-      "net_profit": 1285.93,
-      "max_drawdown_pct": 6.33
-    },
-    {
-      "threshold": 0.68,
-      "total_trades": 52,
-      "profit_factor": 1.2834,
-      "net_profit": 996.42,
-      "max_drawdown_pct": 6.33
-    },
-    {
-      "threshold": 0.7,
-      "total_trades": 43,
-      "profit_factor": 1.3201,
-      "net_profit": 865.13,
-      "max_drawdown_pct": 5.3
-    },
-    {
-      "threshold": 0.75,
-      "total_trades": 22,
-      "profit_factor": 0.8371,
-      "net_profit": -256.04,
-      "max_drawdown_pct": 6.87
+      "threshold": 0.57,
+      "total_trades": 124,
+      "profit_factor": 1.4257,
+      "net_profit": 3247.8,
+      "max_drawdown_pct": 9.91
     }
   ],
   "oos_summary": {
     "total_oos_observations": 3505,
-    "total_signals": 230,
-    "signal_rate_pct": 6.56
+    "total_signals": 1490,
+    "signal_rate_pct": 42.51
   },
   "metrics": {
-    "total_trades": 84,
-    "winning_trades": 41,
-    "losing_trades": 43,
-    "win_rate_pct": 48.81,
-    "profit_factor": 1.4118,
-    "net_profit_pct": 22.08,
-    "max_drawdown_pct": 9.33,
-    "max_drawdown_usd": 991.01,
-    "annualized_sharpe": 0.4028,
-    "avg_win_points": 295.08,
-    "avg_loss_points": -198.79,
-    "avg_holding_days": 6.4,
+    "total_trades": 272,
+    "winning_trades": 123,
+    "losing_trades": 149,
+    "win_rate_pct": 45.22,
+    "profit_factor": 1.2436,
+    "net_profit_pct": 47.48,
+    "max_drawdown_pct": 9.23,
+    "max_drawdown_usd": 1299.04,
+    "annualized_sharpe": 0.4481,
+    "avg_win_points": 359.82,
+    "avg_loss_points": -231.31,
+    "avg_holding_days": 7.3,
     "exit_reasons": {
-      "tp": 32,
-      "sl": 43,
-      "time": 9
+      "tp": 88,
+      "sl": 140,
+      "time": 44
     },
-    "total_spread_cost_points": 84.0,
-    "total_swap_cost_points": 1150.66,
+    "total_spread_cost_points": 272.0,
+    "total_swap_cost_points": 4497.0,
     "starting_capital": 10000.0,
-    "final_equity": 12208.21,
-    "gross_profit": 7570.83,
-    "gross_loss": 5362.62
+    "final_equity": 14747.64,
+    "gross_profit": 24234.28,
+    "gross_loss": 19486.64
   },
   "portfolio": {
     "initial_capital": 10000.0,
-    "final_equity": 12208.21,
-    "net_profit": 2208.21,
-    "net_profit_pct": 22.08,
-    "peak_equity": 12334.38,
-    "max_drawdown": 991.01,
-    "max_drawdown_pct": 9.33
+    "final_equity": 14747.64,
+    "net_profit": 4747.64,
+    "net_profit_pct": 47.48,
+    "peak_equity": 15229.11,
+    "max_drawdown": 1299.04,
+    "max_drawdown_pct": 9.23
   },
   "equity_curve": [
     {
-      "date": "2012-01-25",
-      "equity": 10184.52,
-      "trade_pnl": 184.52,
-      "contracts": 1.7736,
+      "date": "2012-01-19",
+      "equity": 10187.79,
+      "trade_pnl": 187.79,
+      "contracts": 1.718,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2012-02-03",
+      "equity": 10379.53,
+      "trade_pnl": 191.74,
+      "contracts": 2.2207,
       "exit_reason": "tp"
     },
     {
       "date": "2012-02-28",
-      "equity": 10365.14,
-      "trade_pnl": 180.61,
-      "contracts": 2.4622,
+      "equity": 10563.05,
+      "trade_pnl": 183.52,
+      "contracts": 2.4706,
       "exit_reason": "tp"
     },
     {
       "date": "2012-03-06",
-      "equity": 10208.89,
-      "trade_pnl": -156.25,
-      "contracts": 2.5823,
+      "equity": 10444.57,
+      "trade_pnl": -118.48,
+      "contracts": 2.5245,
       "exit_reason": "sl"
     },
     {
       "date": "2012-03-19",
-      "equity": 10399.39,
-      "trade_pnl": 190.5,
-      "contracts": 2.3696,
+      "equity": 10639.47,
+      "trade_pnl": 194.9,
+      "contracts": 2.4243,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2012-04-04",
+      "equity": 10524.55,
+      "trade_pnl": -114.92,
+      "contracts": 2.4966,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-04-10",
+      "equity": 10408.08,
+      "trade_pnl": -116.47,
+      "contracts": 2.3516,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-04-23",
+      "equity": 10268.26,
+      "trade_pnl": -139.83,
+      "contracts": 2.1236,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-05-01",
+      "equity": 10466.31,
+      "trade_pnl": 198.06,
+      "contracts": 1.8104,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2012-05-04",
+      "equity": 10355.2,
+      "trade_pnl": -111.11,
+      "contracts": 1.8966,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-05-15",
+      "equity": 10240.95,
+      "trade_pnl": -114.26,
+      "contracts": 1.7925,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-05-18",
+      "equity": 10132.58,
+      "trade_pnl": -108.37,
+      "contracts": 1.783,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-06-01",
+      "equity": 10019.94,
+      "trade_pnl": -112.64,
+      "contracts": 1.5921,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-06-19",
+      "equity": 10211.9,
+      "trade_pnl": 191.97,
+      "contracts": 1.5972,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2012-06-21",
+      "equity": 10104.83,
+      "trade_pnl": -107.08,
+      "contracts": 1.6916,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-06-28",
+      "equity": 9995.56,
+      "trade_pnl": -109.27,
+      "contracts": 1.6271,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-07-11",
+      "equity": 9884.02,
+      "trade_pnl": -111.54,
+      "contracts": 1.5121,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-08-01",
+      "equity": 10010.94,
+      "trade_pnl": 126.92,
+      "contracts": 1.5973,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2012-08-16",
+      "equity": 10199.69,
+      "trade_pnl": 188.75,
+      "contracts": 1.6286,
       "exit_reason": "tp"
     },
     {
       "date": "2012-09-07",
-      "equity": 10472.23,
-      "trade_pnl": 72.84,
-      "contracts": 2.1933,
+      "equity": 10271.12,
+      "trade_pnl": 71.44,
+      "contracts": 2.1512,
       "exit_reason": "time"
     },
     {
+      "date": "2012-09-26",
+      "equity": 10149.56,
+      "trade_pnl": -121.56,
+      "contracts": 2.2039,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2012-10-08",
+      "equity": 10038.29,
+      "trade_pnl": -111.27,
+      "contracts": 2.2414,
+      "exit_reason": "sl"
+    },
+    {
       "date": "2012-11-07",
-      "equity": 10348.9,
-      "trade_pnl": -123.33,
-      "contracts": 2.0504,
+      "equity": 9916.77,
+      "trade_pnl": -121.52,
+      "contracts": 1.9453,
       "exit_reason": "sl"
     },
     {
       "date": "2012-11-15",
-      "equity": 10235.62,
-      "trade_pnl": -113.28,
-      "contracts": 1.7921,
+      "equity": 9808.22,
+      "trade_pnl": -108.55,
+      "contracts": 1.7172,
       "exit_reason": "sl"
     },
     {
-      "date": "2012-12-21",
-      "equity": 10124.13,
-      "trade_pnl": -111.49,
-      "contracts": 2.0077,
+      "date": "2012-11-26",
+      "equity": 9995.48,
+      "trade_pnl": 187.26,
+      "contracts": 1.724,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2012-12-05",
+      "equity": 9886.4,
+      "trade_pnl": -109.08,
+      "contracts": 1.941,
       "exit_reason": "sl"
     },
     {
       "date": "2012-12-27",
-      "equity": 10015.25,
-      "trade_pnl": -108.88,
-      "contracts": 2.0044,
+      "equity": 9771.53,
+      "trade_pnl": -114.87,
+      "contracts": 1.8593,
       "exit_reason": "sl"
     },
     {
       "date": "2013-01-02",
-      "equity": 10245.81,
-      "trade_pnl": 230.56,
-      "contracts": 1.9678,
+      "equity": 9996.48,
+      "trade_pnl": 224.95,
+      "contracts": 1.9199,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2013-04-18",
+      "equity": 9888.47,
+      "trade_pnl": -108.0,
+      "contracts": 2.0721,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2013-06-20",
+      "equity": 9770.88,
+      "trade_pnl": -117.59,
+      "contracts": 1.9199,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2013-07-10",
+      "equity": 9950.09,
+      "trade_pnl": 179.22,
+      "contracts": 1.6215,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2013-09-09",
+      "equity": 10133.86,
+      "trade_pnl": 183.77,
+      "contracts": 2.0204,
       "exit_reason": "tp"
     },
     {
       "date": "2013-10-08",
-      "equity": 10137.03,
-      "trade_pnl": -108.78,
-      "contracts": 2.086,
+      "equity": 10021.96,
+      "trade_pnl": -111.9,
+      "contracts": 2.0534,
       "exit_reason": "sl"
     },
     {
       "date": "2013-10-14",
-      "equity": 10332.99,
-      "trade_pnl": 195.95,
-      "contracts": 1.8937,
+      "equity": 10215.69,
+      "trade_pnl": 193.73,
+      "contracts": 1.8722,
       "exit_reason": "tp"
     },
     {
       "date": "2013-10-21",
-      "equity": 10536.2,
-      "trade_pnl": 203.21,
-      "contracts": 1.816,
+      "equity": 10416.59,
+      "trade_pnl": 200.9,
+      "contracts": 1.7954,
       "exit_reason": "tp"
     },
     {
+      "date": "2014-01-22",
+      "equity": 10596.56,
+      "trade_pnl": 179.97,
+      "contracts": 2.3529,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2014-01-27",
+      "equity": 10482.28,
+      "trade_pnl": -114.28,
+      "contracts": 1.9584,
+      "exit_reason": "sl"
+    },
+    {
       "date": "2014-02-03",
-      "equity": 10422.48,
-      "trade_pnl": -113.72,
-      "contracts": 1.7319,
+      "equity": 10366.3,
+      "trade_pnl": -115.98,
+      "contracts": 1.8726,
       "exit_reason": "sl"
     },
     {
       "date": "2014-02-11",
-      "equity": 10623.24,
-      "trade_pnl": 200.76,
-      "contracts": 1.5395,
+      "equity": 10565.98,
+      "trade_pnl": 199.68,
+      "contracts": 1.5312,
       "exit_reason": "tp"
     },
     {
-      "date": "2014-03-14",
-      "equity": 10509.31,
-      "trade_pnl": -113.93,
-      "contracts": 1.7824,
-      "exit_reason": "sl"
-    },
-    {
-      "date": "2014-03-24",
-      "equity": 10393.25,
-      "trade_pnl": -116.06,
-      "contracts": 1.6334,
-      "exit_reason": "sl"
+      "date": "2014-03-13",
+      "equity": 10521.84,
+      "trade_pnl": -44.14,
+      "contracts": 1.7547,
+      "exit_reason": "time"
     },
     {
       "date": "2014-03-27",
-      "equity": 10284.05,
-      "trade_pnl": -109.19,
-      "contracts": 1.4239,
+      "equity": 10399.62,
+      "trade_pnl": -122.22,
+      "contracts": 1.6578,
       "exit_reason": "sl"
     },
     {
       "date": "2014-04-07",
-      "equity": 10169.79,
-      "trade_pnl": -114.27,
-      "contracts": 1.3648,
+      "equity": 10284.07,
+      "trade_pnl": -115.55,
+      "contracts": 1.3802,
       "exit_reason": "sl"
     },
     {
+      "date": "2014-04-11",
+      "equity": 10173.15,
+      "trade_pnl": -110.92,
+      "contracts": 1.2292,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2014-05-05",
+      "equity": 10304.21,
+      "trade_pnl": 131.06,
+      "contracts": 1.1253,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2014-05-27",
+      "equity": 10492.62,
+      "trade_pnl": 188.41,
+      "contracts": 1.3305,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2014-06-17",
+      "equity": 10582.33,
+      "trade_pnl": 89.7,
+      "contracts": 1.6354,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2014-07-03",
+      "equity": 10784.0,
+      "trade_pnl": 201.67,
+      "contracts": 2.1202,
+      "exit_reason": "tp"
+    },
+    {
       "date": "2014-07-22",
-      "equity": 10351.93,
-      "trade_pnl": 182.14,
-      "contracts": 2.1476,
+      "equity": 10977.14,
+      "trade_pnl": 193.15,
+      "contracts": 2.2774,
       "exit_reason": "tp"
     },
     {
       "date": "2014-08-18",
-      "equity": 10536.66,
-      "trade_pnl": 184.73,
-      "contracts": 1.7816,
+      "equity": 11173.03,
+      "trade_pnl": 195.89,
+      "contracts": 1.8892,
       "exit_reason": "tp"
     },
     {
-      "date": "2014-09-15",
-      "equity": 10421.83,
-      "trade_pnl": -114.83,
-      "contracts": 2.0998,
+      "date": "2014-09-16",
+      "equity": 11041.8,
+      "trade_pnl": -131.23,
+      "contracts": 2.2813,
       "exit_reason": "sl"
     },
     {
       "date": "2014-09-25",
-      "equity": 10301.55,
-      "trade_pnl": -120.28,
-      "contracts": 1.886,
+      "equity": 10915.85,
+      "trade_pnl": -125.95,
+      "contracts": 1.977,
       "exit_reason": "sl"
     },
     {
       "date": "2014-10-01",
-      "equity": 10189.06,
-      "trade_pnl": -112.49,
-      "contracts": 1.6237,
+      "equity": 10796.65,
+      "trade_pnl": -119.19,
+      "contracts": 1.7206,
       "exit_reason": "sl"
     },
     {
       "date": "2014-10-10",
-      "equity": 10075.75,
-      "trade_pnl": -113.31,
-      "contracts": 1.4748,
+      "equity": 10676.59,
+      "trade_pnl": -120.07,
+      "contracts": 1.5627,
       "exit_reason": "sl"
     },
     {
-      "date": "2014-12-15",
-      "equity": 9966.13,
-      "trade_pnl": -109.62,
-      "contracts": 1.4834,
+      "date": "2014-10-15",
+      "equity": 10565.27,
+      "trade_pnl": -111.31,
+      "contracts": 1.2116,
       "exit_reason": "sl"
     },
     {
-      "date": "2015-01-08",
-      "equity": 10034.47,
-      "trade_pnl": 68.34,
-      "contracts": 1.1705,
-      "exit_reason": "time"
-    },
-    {
-      "date": "2015-01-14",
-      "equity": 9922.11,
-      "trade_pnl": -112.36,
-      "contracts": 1.1446,
-      "exit_reason": "sl"
-    },
-    {
-      "date": "2015-02-06",
-      "equity": 9994.35,
-      "trade_pnl": 72.24,
-      "contracts": 1.0285,
-      "exit_reason": "time"
-    },
-    {
-      "date": "2015-02-19",
-      "equity": 10185.87,
-      "trade_pnl": 191.51,
-      "contracts": 1.0556,
+      "date": "2014-10-21",
+      "equity": 10772.1,
+      "trade_pnl": 206.83,
+      "contracts": 1.0934,
       "exit_reason": "tp"
     },
     {
-      "date": "2015-03-10",
-      "equity": 10075.74,
-      "trade_pnl": -110.13,
-      "contracts": 1.5332,
+      "date": "2014-11-12",
+      "equity": 10950.52,
+      "trade_pnl": 178.42,
+      "contracts": 1.0624,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2014-12-15",
+      "equity": 10831.38,
+      "trade_pnl": -119.14,
+      "contracts": 1.6122,
       "exit_reason": "sl"
     },
     {
+      "date": "2014-12-18",
+      "equity": 11044.9,
+      "trade_pnl": 213.52,
+      "contracts": 1.3262,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2015-01-05",
+      "equity": 10916.32,
+      "trade_pnl": -128.58,
+      "contracts": 1.2531,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2015-01-23",
+      "equity": 11118.22,
+      "trade_pnl": 201.9,
+      "contracts": 1.3152,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2015-02-12",
+      "equity": 11328.46,
+      "trade_pnl": 210.24,
+      "contracts": 1.0818,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2015-03-09",
+      "equity": 11343.71,
+      "trade_pnl": 15.25,
+      "contracts": 1.3583,
+      "exit_reason": "time"
+    },
+    {
       "date": "2015-03-20",
-      "equity": 10302.43,
-      "trade_pnl": 226.69,
-      "contracts": 1.4669,
+      "equity": 11557.34,
+      "trade_pnl": 213.63,
+      "contracts": 1.6318,
       "exit_reason": "tp"
     },
     {
       "date": "2015-03-25",
-      "equity": 10193.48,
-      "trade_pnl": -108.95,
-      "contracts": 1.4949,
+      "equity": 11435.12,
+      "trade_pnl": -122.22,
+      "contracts": 1.677,
       "exit_reason": "sl"
     },
     {
-      "date": "2015-07-14",
-      "equity": 10380.99,
-      "trade_pnl": 187.51,
-      "contracts": 1.3861,
+      "date": "2015-04-22",
+      "equity": 11639.45,
+      "trade_pnl": 204.34,
+      "contracts": 1.5338,
       "exit_reason": "tp"
     },
     {
+      "date": "2015-04-30",
+      "equity": 11510.55,
+      "trade_pnl": -128.9,
+      "contracts": 1.634,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2015-05-06",
+      "equity": 11386.59,
+      "trade_pnl": -123.96,
+      "contracts": 1.4327,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2015-05-28",
+      "equity": 11549.57,
+      "trade_pnl": 162.98,
+      "contracts": 1.3941,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2015-06-08",
+      "equity": 11418.18,
+      "trade_pnl": -131.4,
+      "contracts": 1.6042,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2015-06-29",
+      "equity": 11314.3,
+      "trade_pnl": -103.88,
+      "contracts": 1.6155,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2015-07-15",
+      "equity": 11522.14,
+      "trade_pnl": 207.84,
+      "contracts": 1.5576,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2015-08-06",
+      "equity": 11395.92,
+      "trade_pnl": -126.22,
+      "contracts": 1.4114,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2015-08-12",
+      "equity": 11258.2,
+      "trade_pnl": -137.71,
+      "contracts": 1.3475,
+      "exit_reason": "sl"
+    },
+    {
       "date": "2015-08-20",
-      "equity": 10273.23,
-      "trade_pnl": -107.76,
-      "contracts": 1.2184,
+      "equity": 11123.65,
+      "trade_pnl": -134.56,
+      "contracts": 1.2897,
       "exit_reason": "sl"
     },
     {
       "date": "2015-08-24",
-      "equity": 9928.82,
-      "trade_pnl": -344.41,
-      "contracts": 0.9682,
+      "equity": 10750.72,
+      "trade_pnl": -372.92,
+      "contracts": 1.0484,
       "exit_reason": "sl"
     },
     {
+      "date": "2015-08-27",
+      "equity": 10964.11,
+      "trade_pnl": 213.38,
+      "contracts": 0.7024,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2015-09-22",
+      "equity": 11043.47,
+      "trade_pnl": 79.37,
+      "contracts": 0.6891,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2015-10-09",
+      "equity": 11257.37,
+      "trade_pnl": 213.9,
+      "contracts": 0.8279,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2015-10-23",
+      "equity": 11512.57,
+      "trade_pnl": 255.2,
+      "contracts": 0.9754,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2015-11-13",
+      "equity": 11389.03,
+      "trade_pnl": -123.54,
+      "contracts": 1.2874,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2015-12-07",
+      "equity": 11527.09,
+      "trade_pnl": 138.06,
+      "contracts": 1.2507,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2015-12-09",
+      "equity": 11407.69,
+      "trade_pnl": -119.39,
+      "contracts": 1.26,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2015-12-11",
+      "equity": 11289.7,
+      "trade_pnl": -118.0,
+      "contracts": 1.2016,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-01-04",
+      "equity": 11156.71,
+      "trade_pnl": -132.99,
+      "contracts": 1.0992,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-01-07",
+      "equity": 10999.26,
+      "trade_pnl": -157.44,
+      "contracts": 1.1245,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-01-14",
+      "equity": 10882.6,
+      "trade_pnl": -116.66,
+      "contracts": 0.993,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-01-20",
+      "equity": 10769.35,
+      "trade_pnl": -113.25,
+      "contracts": 0.7501,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-02-08",
+      "equity": 10622.99,
+      "trade_pnl": -146.36,
+      "contracts": 0.6957,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-02-26",
+      "equity": 10834.39,
+      "trade_pnl": 211.4,
+      "contracts": 0.6759,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2016-03-18",
+      "equity": 10998.43,
+      "trade_pnl": 164.04,
+      "contracts": 0.8401,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2016-04-11",
+      "equity": 11015.63,
+      "trade_pnl": 17.2,
+      "contracts": 1.1908,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2016-04-22",
+      "equity": 10899.01,
+      "trade_pnl": -116.63,
+      "contracts": 1.3655,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-05-23",
+      "equity": 10895.71,
+      "trade_pnl": -3.3,
+      "contracts": 1.2856,
+      "exit_reason": "time"
+    },
+    {
       "date": "2016-06-14",
-      "equity": 9821.31,
-      "trade_pnl": -107.52,
-      "contracts": 1.5143,
+      "equity": 10777.72,
+      "trade_pnl": -117.99,
+      "contracts": 1.6617,
       "exit_reason": "sl"
     },
     {
       "date": "2016-06-24",
-      "equity": 9632.24,
-      "trade_pnl": -189.07,
-      "contracts": 1.5158,
+      "equity": 10570.24,
+      "trade_pnl": -207.48,
+      "contracts": 1.6634,
       "exit_reason": "sl"
     },
     {
       "date": "2016-06-30",
-      "equity": 9821.63,
-      "trade_pnl": 189.4,
-      "contracts": 1.0569,
+      "equity": 10778.08,
+      "trade_pnl": 207.84,
+      "contracts": 1.1598,
       "exit_reason": "tp"
     },
     {
       "date": "2016-07-18",
-      "equity": 10003.99,
-      "trade_pnl": 182.36,
-      "contracts": 1.05,
+      "equity": 10978.2,
+      "trade_pnl": 200.12,
+      "contracts": 1.1522,
       "exit_reason": "tp"
     },
     {
-      "date": "2016-09-22",
-      "equity": 10212.91,
-      "trade_pnl": 208.91,
-      "contracts": 1.4169,
+      "date": "2016-09-15",
+      "equity": 11187.6,
+      "trade_pnl": 209.4,
+      "contracts": 1.8088,
       "exit_reason": "tp"
     },
     {
-      "date": "2017-05-01",
-      "equity": 10405.18,
-      "trade_pnl": 192.27,
-      "contracts": 1.6334,
-      "exit_reason": "tp"
-    },
-    {
-      "date": "2017-06-29",
-      "equity": 10279.29,
-      "trade_pnl": -125.89,
-      "contracts": 1.1832,
-      "exit_reason": "sl"
-    },
-    {
-      "date": "2017-07-14",
-      "equity": 10474.35,
-      "trade_pnl": 195.06,
-      "contracts": 0.9471,
-      "exit_reason": "tp"
-    },
-    {
-      "date": "2017-08-30",
-      "equity": 10617.26,
-      "trade_pnl": 142.91,
-      "contracts": 1.1555,
+      "date": "2016-10-10",
+      "equity": 11299.78,
+      "trade_pnl": 112.17,
+      "contracts": 1.5855,
       "exit_reason": "time"
     },
     {
-      "date": "2017-11-15",
-      "equity": 10500.21,
-      "trade_pnl": -117.05,
-      "contracts": 1.4152,
+      "date": "2016-10-31",
+      "equity": 11238.2,
+      "trade_pnl": -61.58,
+      "contracts": 1.5995,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2016-11-03",
+      "equity": 11119.16,
+      "trade_pnl": -119.04,
+      "contracts": 1.6358,
       "exit_reason": "sl"
     },
     {
-      "date": "2018-01-03",
-      "equity": 10701.37,
-      "trade_pnl": 201.15,
-      "contracts": 1.4142,
+      "date": "2016-11-08",
+      "equity": 11335.22,
+      "trade_pnl": 216.06,
+      "contracts": 1.5559,
       "exit_reason": "tp"
     },
     {
+      "date": "2016-11-10",
+      "equity": 11217.42,
+      "trade_pnl": -117.8,
+      "contracts": 1.351,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2016-12-02",
+      "equity": 11180.59,
+      "trade_pnl": -36.83,
+      "contracts": 1.1884,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2016-12-13",
+      "equity": 11394.18,
+      "trade_pnl": 213.58,
+      "contracts": 1.3767,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2016-12-30",
+      "equity": 11263.43,
+      "trade_pnl": -130.74,
+      "contracts": 1.4706,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2017-04-11",
+      "equity": 11133.51,
+      "trade_pnl": -129.93,
+      "contracts": 1.9738,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2017-04-24",
+      "equity": 11388.22,
+      "trade_pnl": 254.71,
+      "contracts": 1.8458,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2017-05-09",
+      "equity": 11591.25,
+      "trade_pnl": 203.03,
+      "contracts": 1.7961,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2017-06-02",
+      "equity": 11806.79,
+      "trade_pnl": 215.54,
+      "contracts": 1.8009,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2017-06-12",
+      "equity": 11681.06,
+      "trade_pnl": -125.73,
+      "contracts": 1.4369,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2017-06-15",
+      "equity": 11552.75,
+      "trade_pnl": -128.3,
+      "contracts": 1.3386,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2017-07-06",
+      "equity": 11410.71,
+      "trade_pnl": -142.04,
+      "contracts": 1.2516,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2017-08-30",
+      "equity": 11566.4,
+      "trade_pnl": 155.69,
+      "contracts": 1.2588,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2017-09-28",
+      "equity": 11564.19,
+      "trade_pnl": -2.21,
+      "contracts": 1.2689,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2017-10-27",
+      "equity": 11766.53,
+      "trade_pnl": 202.34,
+      "contracts": 1.6128,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2017-11-15",
+      "equity": 11636.8,
+      "trade_pnl": -129.72,
+      "contracts": 1.5684,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2017-12-05",
+      "equity": 11489.15,
+      "trade_pnl": -147.65,
+      "contracts": 1.4765,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2018-01-04",
+      "equity": 11712.22,
+      "trade_pnl": 223.07,
+      "contracts": 1.5393,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2018-01-19",
+      "equity": 11927.14,
+      "trade_pnl": 214.92,
+      "contracts": 1.4781,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2018-02-05",
+      "equity": 11801.65,
+      "trade_pnl": -125.49,
+      "contracts": 1.0658,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2018-02-08",
+      "equity": 11680.18,
+      "trade_pnl": -121.48,
+      "contracts": 0.7374,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2018-02-16",
+      "equity": 11908.92,
+      "trade_pnl": 228.75,
+      "contracts": 0.5794,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2018-03-12",
+      "equity": 12111.52,
+      "trade_pnl": 202.59,
+      "contracts": 0.6193,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2018-03-19",
+      "equity": 11983.92,
+      "trade_pnl": -127.6,
+      "contracts": 0.6861,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2018-03-22",
+      "equity": 11860.62,
+      "trade_pnl": -123.3,
+      "contracts": 0.7258,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2018-04-02",
+      "equity": 11733.34,
+      "trade_pnl": -127.28,
+      "contracts": 0.6573,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2018-04-25",
+      "equity": 11609.16,
+      "trade_pnl": -124.18,
+      "contracts": 0.5529,
+      "exit_reason": "sl"
+    },
+    {
       "date": "2018-06-04",
-      "equity": 10801.69,
-      "trade_pnl": 100.32,
-      "contracts": 0.655,
+      "equity": 11717.99,
+      "trade_pnl": 108.83,
+      "contracts": 0.7106,
       "exit_reason": "time"
     },
     {
       "date": "2018-07-12",
-      "equity": 11001.63,
-      "trade_pnl": 199.94,
-      "contracts": 0.8216,
+      "equity": 11934.89,
+      "trade_pnl": 216.9,
+      "contracts": 0.8913,
       "exit_reason": "tp"
     },
     {
-      "date": "2018-08-08",
-      "equity": 11212.83,
-      "trade_pnl": 211.21,
-      "contracts": 0.7581,
-      "exit_reason": "tp"
+      "date": "2018-08-16",
+      "equity": 11978.78,
+      "trade_pnl": 43.89,
+      "contracts": 0.8519,
+      "exit_reason": "time"
     },
     {
       "date": "2018-08-29",
-      "equity": 11418.31,
-      "trade_pnl": 205.48,
-      "contracts": 0.9172,
+      "equity": 12206.62,
+      "trade_pnl": 227.84,
+      "contracts": 0.9852,
       "exit_reason": "tp"
     },
     {
-      "date": "2018-09-27",
-      "equity": 11581.05,
-      "trade_pnl": 162.74,
-      "contracts": 0.9413,
+      "date": "2018-09-26",
+      "equity": 12291.17,
+      "trade_pnl": 84.55,
+      "contracts": 1.0136,
       "exit_reason": "time"
     },
     {
       "date": "2018-10-05",
-      "equity": 11461.94,
-      "trade_pnl": -119.11,
-      "contracts": 0.884,
+      "equity": 12164.76,
+      "trade_pnl": -126.41,
+      "contracts": 0.9382,
       "exit_reason": "sl"
     },
     {
       "date": "2018-10-10",
-      "equity": 11343.49,
-      "trade_pnl": -118.45,
-      "contracts": 0.7793,
+      "equity": 12039.04,
+      "trade_pnl": -125.71,
+      "contracts": 0.8271,
       "exit_reason": "sl"
     },
     {
       "date": "2018-10-24",
-      "equity": 11219.29,
-      "trade_pnl": -124.2,
-      "contracts": 0.619,
+      "equity": 11907.23,
+      "trade_pnl": -131.81,
+      "contracts": 0.657,
       "exit_reason": "sl"
     },
     {
-      "date": "2019-04-08",
-      "equity": 11432.24,
-      "trade_pnl": 212.95,
-      "contracts": 0.8033,
+      "date": "2019-01-09",
+      "equity": 12136.92,
+      "trade_pnl": 229.68,
+      "contracts": 0.4254,
       "exit_reason": "tp"
     },
     {
+      "date": "2019-03-11",
+      "equity": 12194.79,
+      "trade_pnl": 57.88,
+      "contracts": 0.8019,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2019-04-08",
+      "equity": 12422.91,
+      "trade_pnl": 228.12,
+      "contracts": 0.8844,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2019-04-25",
+      "equity": 12655.96,
+      "trade_pnl": 233.05,
+      "contracts": 1.0668,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2019-05-02",
+      "equity": 12516.92,
+      "trade_pnl": -139.04,
+      "contracts": 1.2214,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-05-09",
+      "equity": 12387.4,
+      "trade_pnl": -129.52,
+      "contracts": 0.8674,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-05-13",
+      "equity": 12225.01,
+      "trade_pnl": -162.39,
+      "contracts": 0.7799,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-05-29",
+      "equity": 12087.28,
+      "trade_pnl": -137.73,
+      "contracts": 0.685,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-06-03",
+      "equity": 11961.07,
+      "trade_pnl": -126.21,
+      "contracts": 0.7348,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-07-03",
+      "equity": 12182.18,
+      "trade_pnl": 221.12,
+      "contracts": 0.7045,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2019-07-26",
+      "equity": 12366.76,
+      "trade_pnl": 184.58,
+      "contracts": 0.8955,
+      "exit_reason": "time"
+    },
+    {
       "date": "2019-08-02",
-      "equity": 11298.75,
-      "trade_pnl": -133.5,
-      "contracts": 0.9337,
+      "equity": 12238.42,
+      "trade_pnl": -128.35,
+      "contracts": 0.9207,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-08-23",
+      "equity": 12112.89,
+      "trade_pnl": -125.52,
+      "contracts": 0.6225,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-09-19",
+      "equity": 12215.94,
+      "trade_pnl": 103.05,
+      "contracts": 0.603,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2019-09-25",
+      "equity": 12089.53,
+      "trade_pnl": -126.41,
+      "contracts": 0.8373,
       "exit_reason": "sl"
     },
     {
       "date": "2019-10-02",
-      "equity": 11176.58,
-      "trade_pnl": -122.16,
-      "contracts": 0.7259,
+      "equity": 11960.99,
+      "trade_pnl": -128.54,
+      "contracts": 0.7523,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-10-25",
+      "equity": 12151.59,
+      "trade_pnl": 190.6,
+      "contracts": 0.6826,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2019-11-18",
+      "equity": 12371.41,
+      "trade_pnl": 219.82,
+      "contracts": 0.8451,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2019-12-03",
+      "equity": 12225.13,
+      "trade_pnl": -146.28,
+      "contracts": 1.117,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2019-12-19",
+      "equity": 12449.29,
+      "trade_pnl": 224.16,
+      "contracts": 1.0735,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2020-01-03",
+      "equity": 12306.85,
+      "trade_pnl": -142.44,
+      "contracts": 1.1675,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2020-01-27",
+      "equity": 12158.46,
+      "trade_pnl": -148.39,
+      "contracts": 1.0317,
       "exit_reason": "sl"
     },
     {
       "date": "2020-02-27",
-      "equity": 11062.3,
-      "trade_pnl": -114.29,
-      "contracts": 0.4662,
+      "equity": 12034.13,
+      "trade_pnl": -124.33,
+      "contracts": 0.5071,
       "exit_reason": "sl"
     },
     {
-      "date": "2021-01-20",
-      "equity": 11273.59,
-      "trade_pnl": 211.3,
-      "contracts": 0.422,
+      "date": "2020-04-17",
+      "equity": 12257.98,
+      "trade_pnl": 223.84,
+      "contracts": 0.1841,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2020-07-13",
+      "equity": 12495.32,
+      "trade_pnl": 237.34,
+      "contracts": 0.3969,
       "exit_reason": "tp"
     },
     {
+      "date": "2020-07-24",
+      "equity": 12363.78,
+      "trade_pnl": -131.54,
+      "contracts": 0.3593,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2020-08-06",
+      "equity": 12605.03,
+      "trade_pnl": 241.25,
+      "contracts": 0.3631,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2020-08-26",
+      "equity": 12846.97,
+      "trade_pnl": 241.94,
+      "contracts": 0.4083,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2020-09-04",
+      "equity": 12710.25,
+      "trade_pnl": -136.72,
+      "contracts": 0.4537,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2020-09-28",
+      "equity": 12787.21,
+      "trade_pnl": 76.96,
+      "contracts": 0.2985,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2020-10-12",
+      "equity": 13035.43,
+      "trade_pnl": 248.22,
+      "contracts": 0.2986,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2020-10-19",
+      "equity": 12900.3,
+      "trade_pnl": -135.13,
+      "contracts": 0.3311,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2020-10-28",
+      "equity": 12765.32,
+      "trade_pnl": -134.99,
+      "contracts": 0.335,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2020-10-30",
+      "equity": 12636.22,
+      "trade_pnl": -129.09,
+      "contracts": 0.3298,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2020-11-05",
+      "equity": 12929.07,
+      "trade_pnl": 292.85,
+      "contracts": 0.315,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2020-11-10",
+      "equity": 12796.65,
+      "trade_pnl": -132.42,
+      "contracts": 0.2997,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2020-12-02",
+      "equity": 12945.11,
+      "trade_pnl": 148.45,
+      "contracts": 0.2853,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2020-12-23",
+      "equity": 13005.82,
+      "trade_pnl": 60.71,
+      "contracts": 0.4245,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2021-01-15",
+      "equity": 13028.96,
+      "trade_pnl": 23.14,
+      "contracts": 0.5149,
+      "exit_reason": "time"
+    },
+    {
       "date": "2021-02-09",
-      "equity": 11488.48,
-      "trade_pnl": 214.89,
-      "contracts": 0.3647,
+      "equity": 13277.31,
+      "trade_pnl": 248.35,
+      "contracts": 0.4214,
       "exit_reason": "tp"
     },
     {
       "date": "2021-02-23",
-      "equity": 11371.83,
-      "trade_pnl": -116.65,
-      "contracts": 0.3775,
+      "equity": 13142.5,
+      "trade_pnl": -134.81,
+      "contracts": 0.4363,
       "exit_reason": "sl"
     },
     {
       "date": "2021-03-04",
-      "equity": 11252.96,
-      "trade_pnl": -118.88,
-      "contracts": 0.2989,
+      "equity": 13005.11,
+      "trade_pnl": -137.39,
+      "contracts": 0.3454,
       "exit_reason": "sl"
+    },
+    {
+      "date": "2021-03-16",
+      "equity": 13260.46,
+      "trade_pnl": 255.35,
+      "contracts": 0.2768,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2021-04-08",
+      "equity": 13513.12,
+      "trade_pnl": 252.66,
+      "contracts": 0.2779,
+      "exit_reason": "tp"
     },
     {
       "date": "2021-05-04",
-      "equity": 11130.13,
-      "trade_pnl": -122.82,
-      "contracts": 0.3471,
+      "equity": 13358.78,
+      "trade_pnl": -154.34,
+      "contracts": 0.4011,
       "exit_reason": "sl"
     },
     {
-      "date": "2021-07-21",
-      "equity": 11246.55,
-      "trade_pnl": 116.42,
-      "contracts": 0.4942,
+      "date": "2021-05-12",
+      "equity": 13222.37,
+      "trade_pnl": -136.41,
+      "contracts": 0.409,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2021-06-09",
+      "equity": 13421.45,
+      "trade_pnl": 199.08,
+      "contracts": 0.3761,
       "exit_reason": "time"
     },
     {
+      "date": "2021-06-28",
+      "equity": 13675.07,
+      "trade_pnl": 253.62,
+      "contracts": 0.518,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2021-07-21",
+      "equity": 13818.11,
+      "trade_pnl": 143.04,
+      "contracts": 0.6072,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2021-08-11",
+      "equity": 13838.84,
+      "trade_pnl": 20.73,
+      "contracts": 0.5685,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2021-08-18",
+      "equity": 13689.62,
+      "trade_pnl": -149.22,
+      "contracts": 0.6232,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2021-08-27",
+      "equity": 13951.75,
+      "trade_pnl": 262.13,
+      "contracts": 0.565,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2021-09-13",
+      "equity": 13792.6,
+      "trade_pnl": -159.16,
+      "contracts": 0.6393,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2021-09-20",
+      "equity": 13591.29,
+      "trade_pnl": -201.31,
+      "contracts": 0.6047,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2021-09-29",
+      "equity": 13444.42,
+      "trade_pnl": -146.87,
+      "contracts": 0.4921,
+      "exit_reason": "sl"
+    },
+    {
       "date": "2021-10-04",
-      "equity": 11130.55,
-      "trade_pnl": -116.01,
-      "contracts": 0.3614,
+      "equity": 13304.59,
+      "trade_pnl": -139.83,
+      "contracts": 0.4432,
       "exit_reason": "sl"
     },
     {
       "date": "2021-10-19",
-      "equity": 11341.78,
-      "trade_pnl": 211.23,
-      "contracts": 0.3273,
+      "equity": 13557.08,
+      "trade_pnl": 252.49,
+      "contracts": 0.3912,
       "exit_reason": "tp"
     },
     {
-      "date": "2021-11-03",
-      "equity": 11560.34,
-      "trade_pnl": 218.56,
-      "contracts": 0.3855,
+      "date": "2021-11-02",
+      "equity": 13812.74,
+      "trade_pnl": 255.66,
+      "contracts": 0.4568,
       "exit_reason": "tp"
     },
     {
       "date": "2021-11-19",
-      "equity": 11781.75,
-      "trade_pnl": 221.41,
-      "contracts": 0.3974,
+      "equity": 14077.29,
+      "trade_pnl": 264.55,
+      "contracts": 0.4748,
       "exit_reason": "tp"
     },
     {
+      "date": "2021-11-26",
+      "equity": 13931.64,
+      "trade_pnl": -145.65,
+      "contracts": 0.463,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2021-12-01",
+      "equity": 13789.18,
+      "trade_pnl": -142.46,
+      "contracts": 0.3984,
+      "exit_reason": "sl"
+    },
+    {
       "date": "2021-12-03",
-      "equity": 11656.44,
-      "trade_pnl": -125.32,
-      "contracts": 0.358,
+      "equity": 13649.53,
+      "trade_pnl": -139.65,
+      "contracts": 0.3423,
       "exit_reason": "sl"
     },
     {
       "date": "2021-12-17",
-      "equity": 11533.6,
-      "trade_pnl": -122.84,
-      "contracts": 0.2644,
+      "equity": 13505.68,
+      "trade_pnl": -143.84,
+      "contracts": 0.3096,
       "exit_reason": "sl"
     },
     {
-      "date": "2022-01-20",
-      "equity": 11413.26,
-      "trade_pnl": -120.34,
-      "contracts": 0.246,
+      "date": "2022-01-14",
+      "equity": 13348.56,
+      "trade_pnl": -157.12,
+      "contracts": 0.3037,
       "exit_reason": "sl"
     },
     {
-      "date": "2022-10-07",
-      "equity": 11297.58,
-      "trade_pnl": -115.68,
-      "contracts": 0.2454,
+      "date": "2022-02-14",
+      "equity": 13365.21,
+      "trade_pnl": 16.64,
+      "contracts": 0.2345,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2022-02-23",
+      "equity": 13227.78,
+      "trade_pnl": -137.43,
+      "contracts": 0.2292,
       "exit_reason": "sl"
     },
     {
-      "date": "2022-11-02",
-      "equity": 11183.08,
-      "trade_pnl": -114.5,
-      "contracts": 0.2433,
-      "exit_reason": "sl"
-    },
-    {
-      "date": "2024-01-22",
-      "equity": 11394.86,
-      "trade_pnl": 211.78,
-      "contracts": 0.3783,
+      "date": "2022-03-22",
+      "equity": 13485.02,
+      "trade_pnl": 257.25,
+      "contracts": 0.2159,
       "exit_reason": "tp"
     },
     {
+      "date": "2022-04-22",
+      "equity": 13344.62,
+      "trade_pnl": -140.4,
+      "contracts": 0.2673,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2022-05-09",
+      "equity": 13203.58,
+      "trade_pnl": -141.04,
+      "contracts": 0.2452,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2022-05-12",
+      "equity": 13070.2,
+      "trade_pnl": -133.38,
+      "contracts": 0.2053,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2022-05-20",
+      "equity": 12937.32,
+      "trade_pnl": -132.88,
+      "contracts": 0.2063,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2022-06-13",
+      "equity": 12798.9,
+      "trade_pnl": -138.42,
+      "contracts": 0.2054,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2022-07-06",
+      "equity": 12909.64,
+      "trade_pnl": 110.75,
+      "contracts": 0.2224,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2022-10-07",
+      "equity": 12778.25,
+      "trade_pnl": -131.39,
+      "contracts": 0.2793,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2022-10-25",
+      "equity": 13026.85,
+      "trade_pnl": 248.6,
+      "contracts": 0.2897,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2022-11-02",
+      "equity": 12894.83,
+      "trade_pnl": -132.02,
+      "contracts": 0.2806,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2022-11-15",
+      "equity": 13157.85,
+      "trade_pnl": 263.02,
+      "contracts": 0.2821,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2022-12-12",
+      "equity": 13191.19,
+      "trade_pnl": 33.34,
+      "contracts": 0.3001,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2023-01-12",
+      "equity": 13445.62,
+      "trade_pnl": 254.43,
+      "contracts": 0.3436,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-04-25",
+      "equity": 13303.56,
+      "trade_pnl": -142.06,
+      "contracts": 0.4327,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-05-11",
+      "equity": 13554.98,
+      "trade_pnl": 251.42,
+      "contracts": 0.4497,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-05-22",
+      "equity": 13814.62,
+      "trade_pnl": 259.64,
+      "contracts": 0.4997,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-07-18",
+      "equity": 14073.95,
+      "trade_pnl": 259.33,
+      "contracts": 0.4405,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-07-20",
+      "equity": 13930.88,
+      "trade_pnl": -143.08,
+      "contracts": 0.4579,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-08-09",
+      "equity": 13769.83,
+      "trade_pnl": -161.05,
+      "contracts": 0.4289,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-08-17",
+      "equity": 13623.99,
+      "trade_pnl": -145.84,
+      "contracts": 0.4092,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-08-29",
+      "equity": 13884.94,
+      "trade_pnl": 260.96,
+      "contracts": 0.4179,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-09-19",
+      "equity": 13725.17,
+      "trade_pnl": -159.77,
+      "contracts": 0.3922,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-09-25",
+      "equity": 13581.35,
+      "trade_pnl": -143.82,
+      "contracts": 0.4439,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-10-10",
+      "equity": 13838.02,
+      "trade_pnl": 256.67,
+      "contracts": 0.4338,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-10-18",
+      "equity": 13691.55,
+      "trade_pnl": -146.47,
+      "contracts": 0.4037,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-10-23",
+      "equity": 13549.95,
+      "trade_pnl": -141.6,
+      "contracts": 0.3829,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-10-25",
+      "equity": 13412.59,
+      "trade_pnl": -137.36,
+      "contracts": 0.3782,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2023-11-02",
+      "equity": 13674.79,
+      "trade_pnl": 262.2,
+      "contracts": 0.3513,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-11-14",
+      "equity": 13937.79,
+      "trade_pnl": 263.0,
+      "contracts": 0.3707,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2023-12-06",
+      "equity": 13902.89,
+      "trade_pnl": -34.9,
+      "contracts": 0.4071,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2023-12-14",
+      "equity": 14171.84,
+      "trade_pnl": 268.95,
+      "contracts": 0.4686,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-01-04",
+      "equity": 13981.05,
+      "trade_pnl": -190.79,
+      "contracts": 0.4882,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-01-19",
+      "equity": 14246.88,
+      "trade_pnl": 265.83,
+      "contracts": 0.4851,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-02-20",
+      "equity": 14086.35,
+      "trade_pnl": -160.54,
+      "contracts": 0.4467,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-03-05",
+      "equity": 13939.2,
+      "trade_pnl": -147.15,
+      "contracts": 0.4325,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-04-04",
+      "equity": 13794.66,
+      "trade_pnl": -144.54,
+      "contracts": 0.4467,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-04-15",
+      "equity": 13644.27,
+      "trade_pnl": -150.38,
+      "contracts": 0.3854,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-04-19",
+      "equity": 13503.84,
+      "trade_pnl": -140.43,
+      "contracts": 0.355,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-05-06",
+      "equity": 13760.45,
+      "trade_pnl": 256.61,
+      "contracts": 0.3316,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-05-23",
+      "equity": 14019.44,
+      "trade_pnl": 258.99,
+      "contracts": 0.3381,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-05-31",
+      "equity": 13868.76,
+      "trade_pnl": -150.68,
+      "contracts": 0.4345,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-06-12",
+      "equity": 14164.54,
+      "trade_pnl": 295.78,
+      "contracts": 0.4064,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-07-05",
+      "equity": 14417.38,
+      "trade_pnl": 252.84,
+      "contracts": 0.4242,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-07-17",
+      "equity": 14222.66,
+      "trade_pnl": -194.72,
+      "contracts": 0.4508,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-07-24",
+      "equity": 14072.8,
+      "trade_pnl": -149.85,
+      "contracts": 0.3478,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-08-02",
+      "equity": 13924.08,
+      "trade_pnl": -148.72,
+      "contracts": 0.2932,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-08-15",
+      "equity": 14202.17,
+      "trade_pnl": 278.09,
+      "contracts": 0.2098,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-09-03",
+      "equity": 14046.31,
+      "trade_pnl": -155.86,
+      "contracts": 0.2297,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-09-24",
+      "equity": 14288.15,
+      "trade_pnl": 241.83,
+      "contracts": 0.2521,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2024-10-15",
+      "equity": 14324.24,
+      "trade_pnl": 36.09,
+      "contracts": 0.3019,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2024-11-05",
+      "equity": 14319.03,
+      "trade_pnl": -5.2,
+      "contracts": 0.3487,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2024-11-15",
+      "equity": 14164.96,
+      "trade_pnl": -154.08,
+      "contracts": 0.3275,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-12-04",
+      "equity": 14429.67,
+      "trade_pnl": 264.71,
+      "contracts": 0.3379,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2024-12-20",
+      "equity": 14219.39,
+      "trade_pnl": -210.27,
+      "contracts": 0.388,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2024-12-31",
+      "equity": 14068.09,
+      "trade_pnl": -151.3,
+      "contracts": 0.2958,
+      "exit_reason": "sl"
+    },
+    {
       "date": "2025-01-22",
-      "equity": 11613.73,
-      "trade_pnl": 218.87,
-      "contracts": 0.2143,
+      "equity": 14338.31,
+      "trade_pnl": 270.22,
+      "contracts": 0.2645,
       "exit_reason": "tp"
     },
     {
       "date": "2025-02-25",
-      "equity": 11485.3,
-      "trade_pnl": -128.42,
-      "contracts": 0.2344,
+      "equity": 14179.76,
+      "trade_pnl": -158.55,
+      "contracts": 0.2894,
       "exit_reason": "sl"
     },
     {
       "date": "2025-03-06",
-      "equity": 11364.83,
-      "trade_pnl": -120.47,
-      "contracts": 0.2148,
+      "equity": 14031.02,
+      "trade_pnl": -148.73,
+      "contracts": 0.2652,
       "exit_reason": "sl"
     },
     {
-      "date": "2025-06-30",
-      "equity": 11581.31,
-      "trade_pnl": 216.48,
-      "contracts": 0.2468,
+      "date": "2025-03-31",
+      "equity": 13999.07,
+      "trade_pnl": -31.95,
+      "contracts": 0.1946,
+      "exit_reason": "time"
+    },
+    {
+      "date": "2025-04-04",
+      "equity": 13858.0,
+      "trade_pnl": -141.07,
+      "contracts": 0.1946,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2025-06-27",
+      "equity": 14120.37,
+      "trade_pnl": 262.37,
+      "contracts": 0.2912,
       "exit_reason": "tp"
     },
     {
-      "date": "2025-07-22",
-      "equity": 11717.79,
-      "trade_pnl": 136.48,
-      "contracts": 0.2698,
+      "date": "2025-07-21",
+      "equity": 14258.96,
+      "trade_pnl": 138.59,
+      "contracts": 0.3294,
       "exit_reason": "time"
     },
     {
       "date": "2025-08-07",
-      "equity": 11944.69,
-      "trade_pnl": 226.9,
-      "contracts": 0.318,
+      "equity": 14535.06,
+      "trade_pnl": 276.1,
+      "contracts": 0.387,
       "exit_reason": "tp"
+    },
+    {
+      "date": "2025-08-20",
+      "equity": 14387.22,
+      "trade_pnl": -147.84,
+      "contracts": 0.3929,
+      "exit_reason": "sl"
     },
     {
       "date": "2025-09-10",
-      "equity": 12103.54,
-      "trade_pnl": 158.85,
-      "contracts": 0.307,
-      "exit_reason": "time"
-    },
-    {
-      "date": "2025-10-20",
-      "equity": 12334.38,
-      "trade_pnl": 230.84,
-      "contracts": 0.2752,
+      "equity": 14653.04,
+      "trade_pnl": 265.82,
+      "contracts": 0.3741,
       "exit_reason": "tp"
     },
     {
-      "date": "2025-11-21",
-      "equity": 12208.21,
-      "trade_pnl": -126.17,
-      "contracts": 0.1939,
+      "date": "2025-10-20",
+      "equity": 14932.5,
+      "trade_pnl": 279.46,
+      "contracts": 0.3332,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2025-10-28",
+      "equity": 15229.11,
+      "trade_pnl": 296.6,
+      "contracts": 0.2888,
+      "exit_reason": "tp"
+    },
+    {
+      "date": "2025-11-04",
+      "equity": 15058.05,
+      "trade_pnl": -171.05,
+      "contracts": 0.3007,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2025-11-20",
+      "equity": 14903.94,
+      "trade_pnl": -154.12,
+      "contracts": 0.24,
+      "exit_reason": "sl"
+    },
+    {
+      "date": "2025-12-15",
+      "equity": 14747.64,
+      "trade_pnl": -156.3,
+      "contracts": 0.2609,
       "exit_reason": "sl"
     }
   ]

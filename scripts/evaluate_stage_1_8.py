@@ -201,7 +201,7 @@ def run_optimization(
     log.info("Loading master dataset from %s", master_path)
     master_df = pd.read_parquet(master_path)
 
-    thresholds = [0.55, 0.60, 0.62, 0.64, 0.66, 0.68, 0.70, 0.75]
+    thresholds = [0.50, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57]
     best_threshold = None
     best_profit_factor = -1.0
     best_report = None
@@ -239,7 +239,7 @@ def run_optimization(
         })
         log.info("  -> Trades: %d | PF: %.3f | Net: $%.2f", metrics["total_trades"], pf, net_prof)
         
-        if pf > best_profit_factor and net_prof > 0:
+        if pf > best_profit_factor and net_prof > 0 and metrics["total_trades"] >= 270:
             best_profit_factor = pf
             best_threshold = threshold
             
