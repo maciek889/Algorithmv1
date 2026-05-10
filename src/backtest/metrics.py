@@ -29,8 +29,8 @@ def compute_trading_metrics(
     win_rate = n_wins / n_trades if n_trades > 0 else 0.0
 
     # Exit reason breakdown
-    tp_exits = sum(1 for t in trades if t.exit_reason == "tp")
     sl_exits = sum(1 for t in trades if t.exit_reason == "sl")
+    tsl_exits = sum(1 for t in trades if t.exit_reason == "tsl")
     time_exits = sum(1 for t in trades if t.exit_reason == "time")
 
     # Profit Factor
@@ -86,8 +86,8 @@ def compute_trading_metrics(
         "avg_loss_points": round(avg_loss, 2),
         "avg_holding_days": round(avg_holding, 1),
         "exit_reasons": {
-            "tp": tp_exits,
             "sl": sl_exits,
+            "tsl": tsl_exits,
             "time": time_exits,
         },
         "total_spread_cost_points": round(total_spread, 2),
@@ -113,7 +113,7 @@ def _empty_metrics(portfolio: dict[str, Any]) -> dict[str, Any]:
         "avg_win_points": 0.0,
         "avg_loss_points": 0.0,
         "avg_holding_days": 0.0,
-        "exit_reasons": {"tp": 0, "sl": 0, "time": 0},
+        "exit_reasons": {"sl": 0, "tsl": 0, "time": 0},
         "total_spread_cost_points": 0.0,
         "total_swap_cost_points": 0.0,
         "starting_capital": portfolio.get("initial_capital", 10000),

@@ -1,13 +1,12 @@
-"""Trade simulator: Triple Barrier resolution with realistic CFD costs.
+"""Trade simulator: trailing-stop resolution with realistic CFD costs.
 
-The simulator receives a sequence of ML entry signals and resolves each trade
-against future OHLC data using the Triple Barrier exit logic defined in
-config/horizon.yaml.
+The simulator receives ML entry signals and resolves each long trade against
+future OHLC data using an ATR-based trailing stop loss.
 
 Cost Model (US100 CFD):
-  - Spread: 1.5 index points on entry (half-spread applied at open)
-  - Overnight swap: −0.03 index points per night the position is held
-    (approximation of typical retail CFD broker overnight financing)
+  - Spread: 1.0 index point round-trip
+  - Slippage: normal exits use 0.5 points; stop-loss exits use 2.0 points
+  - Overnight swap: annualized financing applied on full position value
 """
 
 from __future__ import annotations
@@ -19,11 +18,11 @@ import numpy as np
 import pandas as pd
 
 
-# ── Cost parameters for US100 CFD ────────────────────────────────────────────
-SPREAD_POINTS = 1.0        # full spread cost round-trip
-SLIPPAGE_NORMAL = 0.5      # slippage for normal entry, time exit, and TP exit
-SLIPPAGE_SL = 2.0          # slippage for SL exit
-SWAP_RATE_ANNUAL = 0.06    # 6% annualized swap applied on full position value
+SPREAD_POINTS = 1.0
+SLIPPAGE_NORMAL = 0.5
+SLIPPAGE_SL = 2.0
+SWAP_RATE_ANNUAL = 0.06
+TSL_ACTIVATION_MULTIPLIER = 1.0
 
 
 @dataclass
@@ -32,17 +31,19 @@ class TradeResult:
 
     entry_date: pd.Timestamp
     exit_date: pd.Timestamp
-    entry_price: float          # Close of signal day (before spread)
-    effective_entry: float      # entry_price + half-spread
-    exit_price: float           # resolved exit price
-    exit_reason: str            # 'tp' | 'sl' | 'time'
+    entry_price: float
+    effective_entry: float
+    exit_price: float
+    exit_reason: str
     holding_days: int
-    pnl_points: float           # raw P&L in index points (after costs)
-    spread_cost: float          # spread paid in points
-    swap_cost: float            # cumulative overnight cost in points
+    pnl_points: float
+    spread_cost: float
+    swap_cost: float
     atr_at_entry: float
-    tp_level: float
     sl_level: float
+    final_stop_level: float
+    peak_price: float
+    trailing_stop_activated: bool
 
 
 @dataclass
@@ -50,8 +51,8 @@ class PortfolioState:
     """Tracks equity, position sizing and trade accounting."""
 
     initial_capital: float = 10_000.0
-    risk_per_trade_pct: float = 0.01     # risk 1% of equity per trade
-    point_value: float = 1.0             # $ per point per contract (CFD)
+    risk_per_trade_pct: float = 0.01
+    point_value: float = 1.0
     equity: float = field(init=False)
     trades: list[TradeResult] = field(default_factory=list, init=False)
     equity_curve: list[dict[str, Any]] = field(default_factory=list, init=False)
@@ -65,18 +66,32 @@ def resolve_trade(
     entry_date: pd.Timestamp,
     atr_value: float,
     horizon_days: int,
-    tp_multiplier: float,
     sl_multiplier: float,
+    tsl_activation_multiplier: float = TSL_ACTIVATION_MULTIPLIER,
+    trailing_distance_multiplier: float | None = None,
 ) -> TradeResult | None:
-    """Resolve a single long trade using the Triple Barrier Method.
+    """Resolve a long trade using an ATR-based trailing stop.
 
-    Uses future High/Low prices from master_dataset.  Returns None if the
-    trade cannot be resolved (e.g. not enough future data).
+    Initial risk is set at ``sl_multiplier`` ATR below the effective entry.
+    The trailing stop activates after price reaches ``tsl_activation_multiplier``
+    ATR of open profit, then trails ``trailing_distance_multiplier`` ATR below
+    the highest observed high since entry.  The stop only tightens.
 
-    Pessimistic rule: if both TP and SL are breached on the same day,
-    record as SL hit.
+    With daily OHLC data, the existing stop is checked before the day's high
+    can update the trailing stop.  This avoids same-bar lookahead.
     """
     if atr_value <= 0 or not np.isfinite(atr_value):
+        return None
+    if horizon_days < 1:
+        return None
+    if sl_multiplier <= 0 or not np.isfinite(sl_multiplier):
+        return None
+    if tsl_activation_multiplier <= 0 or not np.isfinite(tsl_activation_multiplier):
+        return None
+
+    if trailing_distance_multiplier is None:
+        trailing_distance_multiplier = sl_multiplier
+    if trailing_distance_multiplier <= 0 or not np.isfinite(trailing_distance_multiplier):
         return None
 
     idx = master_df.index
@@ -86,14 +101,16 @@ def resolve_trade(
         return None
 
     entry_close = float(master_df.iloc[entry_pos]["us100_close"])
-    # Entry: Close + half-spread + normal slippage
     effective_entry = entry_close + (SPREAD_POINTS / 2.0) + SLIPPAGE_NORMAL
 
-    tp_level = effective_entry + (tp_multiplier * atr_value)
-    sl_level = effective_entry - (sl_multiplier * atr_value)
+    initial_sl_level = effective_entry - (sl_multiplier * atr_value)
+    stop_level = initial_sl_level
+    activation_level = effective_entry + (tsl_activation_multiplier * atr_value)
+    trailing_distance = trailing_distance_multiplier * atr_value
+    peak_price = effective_entry
+    trailing_stop_activated = False
 
     max_pos = min(entry_pos + horizon_days, len(master_df) - 1)
-
     if entry_pos + 1 > max_pos:
         return None
 
@@ -106,36 +123,24 @@ def resolve_trade(
         day_high = float(master_df.iloc[future_pos]["us100_high"])
         day_low = float(master_df.iloc[future_pos]["us100_low"])
 
-        # 1. Gap logic at Open
-        if day_open <= sl_level:
+        if day_open <= stop_level:
             exit_price = day_open
-            exit_reason = "sl"
-            exit_pos = future_pos
-            break
-        if day_open >= tp_level:
-            exit_price = day_open
-            exit_reason = "tp"
+            exit_reason = "tsl" if trailing_stop_activated else "sl"
             exit_pos = future_pos
             break
 
-        # 2. Intraday triggers
-        hit_sl = day_low <= sl_level
-        hit_tp = day_high >= tp_level
+        if day_low <= stop_level:
+            exit_price = stop_level
+            exit_reason = "tsl" if trailing_stop_activated else "sl"
+            exit_pos = future_pos
+            break
 
-        if hit_sl:
-            # Pessimistic: SL first if both hit
-            exit_price = sl_level
-            exit_reason = "sl"
-            exit_pos = future_pos
-            break
-        if hit_tp:
-            exit_price = tp_level
-            exit_reason = "tp"
-            exit_pos = future_pos
-            break
+        peak_price = max(peak_price, day_high)
+        if peak_price >= activation_level:
+            trailing_stop_activated = True
+            stop_level = max(stop_level, peak_price - trailing_distance)
 
     if exit_price is None:
-        # Time exit at the close of horizon day
         exit_pos = max_pos
         exit_price = float(master_df.iloc[exit_pos]["us100_close"])
         exit_reason = "time"
@@ -144,15 +149,10 @@ def resolve_trade(
     holding_days = exit_pos - entry_pos
     calendar_days = (exit_date - entry_date).days
 
-    spread_cost = SPREAD_POINTS / 2.0  # half-spread at exit too
-    
-    if exit_reason == "sl":
-        slippage_cost = SLIPPAGE_SL
-    else:
-        slippage_cost = SLIPPAGE_NORMAL
-        
+    spread_cost = SPREAD_POINTS / 2.0
+    slippage_cost = SLIPPAGE_SL if exit_reason in {"sl", "tsl"} else SLIPPAGE_NORMAL
     swap_cost = calendar_days * (effective_entry * SWAP_RATE_ANNUAL / 365.0)
-    
+
     effective_exit = exit_price - spread_cost - slippage_cost
     net_pnl = effective_exit - effective_entry - swap_cost
 
@@ -165,11 +165,13 @@ def resolve_trade(
         exit_reason=exit_reason,
         holding_days=holding_days,
         pnl_points=net_pnl,
-        spread_cost=SPREAD_POINTS / 2.0 + spread_cost,  # total spread
+        spread_cost=SPREAD_POINTS / 2.0 + spread_cost,
         swap_cost=swap_cost,
         atr_at_entry=atr_value,
-        tp_level=tp_level,
-        sl_level=sl_level,
+        sl_level=initial_sl_level,
+        final_stop_level=stop_level,
+        peak_price=peak_price,
+        trailing_stop_activated=trailing_stop_activated,
     )
 
 
@@ -181,12 +183,9 @@ def run_portfolio_simulation(
 ) -> dict[str, Any]:
     """Simulate portfolio equity progression using fixed fractional sizing.
 
-    Position sizing: risk ``risk_per_trade_pct`` of current equity on each
-    trade's SL distance.  The number of "contracts" is:
-
-        contracts = (equity × risk_pct) / (SL_distance × point_value)
-
-    This ensures no single trade risks more than 1% of account equity.
+    Position sizing risks ``risk_per_trade_pct`` of current equity against the
+    initial stop distance.  Later trailing-stop movement does not resize the
+    trade.
     """
     equity = initial_capital
     peak_equity = equity
@@ -201,11 +200,8 @@ def run_portfolio_simulation(
         if sl_distance <= 0:
             continue
 
-        # Position sizing: fixed fractional risk
         risk_amount = equity * risk_per_trade_pct
         contracts = risk_amount / (sl_distance * point_value)
-
-        # Dollar P&L for this trade
         dollar_pnl = trade.pnl_points * contracts * point_value
 
         equity += dollar_pnl
@@ -215,7 +211,6 @@ def run_portfolio_simulation(
         else:
             gross_loss += abs(dollar_pnl)
 
-        # Track peak and drawdown
         if equity > peak_equity:
             peak_equity = equity
         drawdown = peak_equity - equity
@@ -224,13 +219,15 @@ def run_portfolio_simulation(
             max_drawdown_pct = drawdown_pct
             max_drawdown = drawdown
 
-        equity_curve.append({
-            "date": trade.exit_date.strftime("%Y-%m-%d"),
-            "equity": round(equity, 2),
-            "trade_pnl": round(dollar_pnl, 2),
-            "contracts": round(contracts, 4),
-            "exit_reason": trade.exit_reason,
-        })
+        equity_curve.append(
+            {
+                "date": trade.exit_date.strftime("%Y-%m-%d"),
+                "equity": round(equity, 2),
+                "trade_pnl": round(dollar_pnl, 2),
+                "contracts": round(contracts, 4),
+                "exit_reason": trade.exit_reason,
+            }
+        )
 
     return {
         "initial_capital": initial_capital,

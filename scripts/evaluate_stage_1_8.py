@@ -2,7 +2,7 @@
 
 Re-runs the 56-fold walk-forward XGBoost loop to generate OOS probabilities,
 optimizes the signal threshold (starting at 0.60), and resolves each predicted entry 
-through a Triple Barrier exit with realistic CFD costs (spread + slippage + overnight swaps).
+through a trailing-stop exit with realistic CFD costs (spread + slippage + overnight swaps).
 
 Usage:
     python scripts/evaluate_stage_1_8.py
@@ -29,6 +29,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.backtest.metrics import compute_trading_metrics          # noqa: E402
 from src.backtest.simulator import (                              # noqa: E402
+    TSL_ACTIVATION_MULTIPLIER,
     TradeResult,
     resolve_trade,
     run_portfolio_simulation,
@@ -177,7 +178,6 @@ def resolve_all_trades(
             entry_date=entry_date,
             atr_value=atr_value,
             horizon_days=hcfg.horizon_days,
-            tp_multiplier=hcfg.tp_multiplier,
             sl_multiplier=hcfg.sl_multiplier,
         )
 
@@ -251,13 +251,15 @@ def run_optimization(
                     "initial_capital": INITIAL_CAPITAL,
                     "risk_per_trade_pct": RISK_PER_TRADE * 100,
                     "position_sizing": "Fixed fractional: risk 1% of equity per trade based on SL distance",
+                    "exit_logic": "ATR trailing stop; no fixed take profit",
                     "spread_points": SPREAD_POINTS,
                     "slippage_normal": SLIPPAGE_NORMAL,
                     "slippage_sl": SLIPPAGE_SL,
                     "swap_rate_annual": SWAP_RATE_ANNUAL,
                     "horizon_days": hcfg.horizon_days,
-                    "tp_multiplier": hcfg.tp_multiplier,
-                    "sl_multiplier": hcfg.sl_multiplier,
+                    "initial_sl_atr_multiplier": hcfg.sl_multiplier,
+                    "tsl_activation_atr_multiplier": TSL_ACTIVATION_MULTIPLIER,
+                    "trailing_distance_atr_multiplier": hcfg.sl_multiplier,
                     "atr_period": hcfg.atr_period,
                 },
                 "threshold_search_results": threshold_results,
@@ -324,8 +326,8 @@ def print_summary(report: dict[str, Any]) -> None:
     print(f"  Avg Loss (pts):      {m['avg_loss_points']:.2f}")
     print(f"  Avg Holding (days):  {m['avg_holding_days']:.1f}")
     print()
-    print(f"  Exit Reasons:  TP={m['exit_reasons']['tp']}  "
-          f"SL={m['exit_reasons']['sl']}  "
+    print(f"  Exit Reasons:  SL={m['exit_reasons']['sl']}  "
+          f"TSL={m['exit_reasons']['tsl']}  "
           f"Time={m['exit_reasons']['time']}")
     print()
     print(f"  Cost Model:  Spread={cfg['spread_points']} pts  "
