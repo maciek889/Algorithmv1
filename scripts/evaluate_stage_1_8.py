@@ -30,6 +30,7 @@ if str(REPO_ROOT) not in sys.path:
 from src.backtest.metrics import compute_trading_metrics          # noqa: E402
 from src.backtest.simulator import (                              # noqa: E402
     TSL_ACTIVATION_MULTIPLIER,
+    TSL_TRAILING_DISTANCE_MULTIPLIER,
     TradeResult,
     resolve_trade,
     run_portfolio_simulation,
@@ -259,7 +260,7 @@ def run_optimization(
                     "horizon_days": hcfg.horizon_days,
                     "initial_sl_atr_multiplier": hcfg.sl_multiplier,
                     "tsl_activation_atr_multiplier": TSL_ACTIVATION_MULTIPLIER,
-                    "trailing_distance_atr_multiplier": hcfg.sl_multiplier,
+                    "trailing_distance_atr_multiplier": TSL_TRAILING_DISTANCE_MULTIPLIER,
                     "atr_period": hcfg.atr_period,
                 },
                 "threshold_search_results": threshold_results,

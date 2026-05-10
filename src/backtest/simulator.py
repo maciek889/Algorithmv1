@@ -22,7 +22,8 @@ SPREAD_POINTS = 1.0
 SLIPPAGE_NORMAL = 0.5
 SLIPPAGE_SL = 2.0
 SWAP_RATE_ANNUAL = 0.06
-TSL_ACTIVATION_MULTIPLIER = 1.0
+TSL_ACTIVATION_MULTIPLIER = 1.5
+TSL_TRAILING_DISTANCE_MULTIPLIER = 2.0
 
 
 @dataclass
@@ -68,7 +69,7 @@ def resolve_trade(
     horizon_days: int,
     sl_multiplier: float,
     tsl_activation_multiplier: float = TSL_ACTIVATION_MULTIPLIER,
-    trailing_distance_multiplier: float | None = None,
+    trailing_distance_multiplier: float | None = TSL_TRAILING_DISTANCE_MULTIPLIER,
 ) -> TradeResult | None:
     """Resolve a long trade using an ATR-based trailing stop.
 
@@ -90,7 +91,7 @@ def resolve_trade(
         return None
 
     if trailing_distance_multiplier is None:
-        trailing_distance_multiplier = sl_multiplier
+        trailing_distance_multiplier = TSL_TRAILING_DISTANCE_MULTIPLIER
     if trailing_distance_multiplier <= 0 or not np.isfinite(trailing_distance_multiplier):
         return None
 
