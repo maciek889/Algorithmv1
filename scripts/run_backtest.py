@@ -33,7 +33,7 @@ from src.backtest.simulator import (                              # noqa: E402
     resolve_trade,
     run_portfolio_simulation,
     SPREAD_POINTS,
-    SWAP_PER_NIGHT,
+    SWAP_RATE_ANNUAL,
 )
 from src.features.engineering import compute_wilder_atr           # noqa: E402
 from src.features.labeling import load_horizon_config             # noqa: E402
@@ -261,7 +261,7 @@ def run_backtest(
             "risk_per_trade_pct": RISK_PER_TRADE * 100,
             "position_sizing": "Fixed fractional: risk 1% of equity per trade based on SL distance",
             "spread_points": SPREAD_POINTS,
-            "swap_per_night": SWAP_PER_NIGHT,
+            "swap_rate_annual": SWAP_RATE_ANNUAL,
             "horizon_days": hcfg.horizon_days,
             "tp_multiplier": hcfg.tp_multiplier,
             "sl_multiplier": hcfg.sl_multiplier,
@@ -328,7 +328,7 @@ def print_summary(report: dict[str, Any]) -> None:
           f"Time={m['exit_reasons']['time']}")
     print()
     print(f"  Cost Model:  Spread={cfg['spread_points']} pts  "
-          f"Swap={cfg['swap_per_night']} pts/night")
+          f"Swap={cfg['swap_rate_annual']*100:.1f}% annualized")
     print(f"  Total Costs:  Spread={m['total_spread_cost_points']:.1f} pts  "
           f"Swap={m['total_swap_cost_points']:.1f} pts")
     print()
